@@ -3,16 +3,15 @@
 pragma solidity >=0.5.0 <0.9.0;
 
 contract Profit_sharing {
+    address manager; 
     mapping(address => uint) public partners_shares;
     mapping(address => uint) public partners_income;
     address [] public partners;
-    uint total_share;
-
-    address public manager; 
-
+    uint public total_share;
+    
 
     constructor () {
-        manager = msg.sender; 
+        manager = msg.sender;
     }
 
     receive () payable external {
@@ -28,14 +27,6 @@ contract Profit_sharing {
         return address(this).balance;
     }
 
-    function get_total_share() public view returns(uint){
-        return total_share;
-    }
-
-
-    function getBalance() public view returns(uint){
-        return address(payable(msg.sender)).balance;
-    }
 
     function modify_partners (address partner, uint share) public {
         require(msg.sender == manager);
