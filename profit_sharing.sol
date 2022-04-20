@@ -3,6 +3,7 @@
 pragma solidity >=0.5.0 <0.9.0;
 
 contract Profit_sharing {
+    
     address manager; 
     mapping(address => uint) public partners_shares;
     mapping(address => uint) public partners_income;
@@ -40,8 +41,7 @@ contract Profit_sharing {
             partners_shares[partner] = share;
             partners.push(partner);
             partners_income[partner] = 0;
-        }
-        
+        }   
     }
 
     function claim_share () public payable {
