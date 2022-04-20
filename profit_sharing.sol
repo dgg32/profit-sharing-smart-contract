@@ -9,13 +9,11 @@ contract Profit_sharing {
     address [] public partners;
     uint public total_share;
     
-
     constructor () {
         manager = msg.sender;
     }
 
     receive () payable external {
-
         for (uint i; i < partners.length; ++i)
         {
             uint share = partners_shares[partners[i]];
@@ -26,7 +24,6 @@ contract Profit_sharing {
     function getContractBalance() public view returns(uint){
         return address(this).balance;
     }
-
 
     function modify_partners (address partner, uint share) public {
         require(msg.sender == manager);
@@ -54,5 +51,4 @@ contract Profit_sharing {
         recipient.transfer(amount);
     }
 
-    
 }
